@@ -2,11 +2,13 @@
   "name": "Random Hue",
   "id": "1128028298799358676",
   "api": "1.0.0",
-  "main": "code.js",
   "editorType": [
     "figma",
     "figjam"
   ],
+  "permissions": [],
   "containsWidget": true,
+  "main": "dist/code.js",
+  "ui": "dist/index.html",
   "widgetApi": "1.0.0"
 }

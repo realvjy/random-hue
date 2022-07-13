@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "figma.widget.h",
+    "esModuleInterop": true,
+    "jsxFragmentFactory": "figma.widget.Fragment",
+    "target": "es6",
+    "lib": ["es2017"],
+    "moduleResolution": "node",
+    "strict": true,
+    "typeRoots": ["../node_modules/@figma", "node", "decs.d.ts"]
+  }
+}
