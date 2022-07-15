@@ -1,46 +1,64 @@
-# @figma/create-widget
+[![Random Hues](ui-src/preview.png)](https://www.figma.com/community/plugin/1107546399747513238/3dicons)
 
-This repo was created by @figma/create-widget
+# Random Hues Figma Widget
 
-## Getting started
+Explore millions of color hues/shades/tones in your Figma and FigJam design files for perfect color palettes that suit your design next project.
 
-Run the following command to start building your widget
+## Features:
 
-```bash
-npm run dev
-```
+- By using the random button, you always get a pleasant color palette that generates in real time.
+- There are millions of possible combinations to genrate your next color palette.
+- Every shade of color has a name.
 
-1. Log in to your account and open the Figma desktop app
-2. You can open any existing FigJam document or create a new one.
-3. Go to Menu > Widgets > Development > "Import widget from manifest..."
-4. Select the manifest.json in this folder
+## Figma Community
 
-## Organization
+Grab community file from 👉 here [SOON](#)
 
-This widget uses:
+## Local development
 
-- [esbuild](https://esbuild.github.io/) for bundling
-- [vite](https://vitejs.dev/) and [react](https://reactjs.org/) for the iframe
-- [typescript](https://www.typescriptlang.org/) for typechecking
+Plugin is opensource. You are welcome to contribute.
 
-| file/folder   | description                                                                      |
-| ------------- | -------------------------------------------------------------------------------- |
-| manifest.json | The widget's [manifest.json](https://www.figma.com/widget-docs/widget-manifest/) |
-| widget-src/   | Contains the widget code                                                         |
-| ui-src/       | Contains the iframe code                                                         |
+1. Clone the repository
 
-### `npm run dev`
+   ```shell
+   git clone
+   cd random-hues
+   ```
 
-This is the only command you need to run in development. It will start the following processes for you:
+1. Install the dependencies
 
-- bundling (both widget and iframe code)
-- typechecking (both widget and iframe code)
-- vite dev server (for iframe development)
+   ```shell
+   yarn
+   ```
 
-### `npm run build`
+1. Build the widget
 
-This runs bundling with minification turned on. You should run this command before releasing your widget.
+   ```
+   yarn dev
+   ```
 
-### `npm run test`
+1. Open the [Figma desktop app](https://www.figma.com/downloads/)
 
-This runs typechecking and makes sure that your widget builds without errors.
+1. Go to `Menu > Widgets > Development > Import Widget from manifest...`
+
+1. Choose `random-hue/manifest.json`
+
+1. Run the plugin by going to `Menu > Widgets > Development > Random Hue`
+
+## Open source:
+
+- [Color-scheme.js](https://github.com/c0bra/color-scheme-js) for harmonic color generation.
+- [Ntc](https://www.npmjs.com/package/ntc-ts) for giving name of the color.
+- Code is open-source you can support and contribute here https://github.com/realvjy/random-hue
+
+## UIHUES:
+
+My other project, uihues, has handcrafted color palettes. https://instagram.com/uihues
+
+## Support & Donate
+
+The goal of this project is to contribute to the open design community. Even though I do not intend to charge for these community resources, if random hues (uihues) has ever been useful to you or your team, I would appreciate your support! It helps to maintain server costs and keep it grow. buymeacoffee here [Github sponsor](https://github.com/sponsors/realvjy) | [Buy me a coffee](https://buymeacoffee.com/realvjy)
+
+## Say hi or Feedback
+
+Feel free to tag me or say hi on Twitter ([@realvjy](http://twitter.com/realvjy)). You are also welcome to share your feedback or bug reports 🙏
