@@ -15,34 +15,40 @@ interface ntcResult {
 initColors(ORIGINAL_COLORS);
 
 export function getColorData() {
-  var seed = rand(359); // Max hue 0-350
+  var seed = rand(360); // Max hue 0-360
   var color = new ColorScheme();
-  color.from_hue(seed); // Hue 0-359 | 0 is red, 120 is green, 240 is blue.
+  var uihues = []; // final hues
+
+  var newRGB = getNewColor(); //Create new Color using rand fx
+
+  // color.from_hue(seed); // Hue 0-359 | 0 is red, 120 is green, 240 is blue.
+  color.from_hex(rgbHex(newRGB.r, newRGB.g, newRGB.b)); //Using from_hex to get more varitye of base color: ;
+  // console.log(newRGB);
 
   // Scheme tetrade | analogic | contrast | mono | triade
   // Choose between tetrade and analogic
-  var choose = seed % 2 === 0 ? "analogic" : "tetrade";
+  var variations = ["default", "hard", "soft", "pastel", "light", "pale"];
+  var schemes = ["mono", "contrast", "triade", "tetrade", "analogic"];
 
-  var colors = color.scheme(choose);
-  var colorset = colors.colors();
+  var sch = schemes[rand(5)]; // return 0 - 5 rand(5)
+  var vari = variations[rand(6)]; // return 0 - 6
 
-  var dataLength = colorset.length;
+  var colors = color.scheme(sch).variation(vari);
 
-  var hue_1 = addHash(colorset[0]);
-  var hue_2 = addHash(colorset[rand(8) + 1]);
-  var hue_3 = addHash(colorset[10]);
-  var hue_4 = addHash(colorset[dataLength - 1]);
-
-  var uihues = [];
-  uihues.push({ color: hue_1, name: getColorName(hue_1).name });
-  uihues.push({ color: hue_2, name: getColorName(hue_2).name });
-  uihues.push({ color: hue_3, name: getColorName(hue_3).name });
-  uihues.push({ color: hue_4, name: getColorName(hue_4).name });
-
+  var hues = getColorset(sch, colors);
+  if (hues) {
+    uihues.push({ color: hues[0], name: getColorName(hues[0]).name });
+    uihues.push({ color: hues[1], name: getColorName(hues[1]).name });
+    uihues.push({ color: hues[2], name: getColorName(hues[2]).name });
+    uihues.push({ color: hues[3], name: getColorName(hues[3]).name });
+  } else {
+    uihues.push({ color: "#CECECE", name: getColorName("#CECECE").name });
+    uihues.push({ color: "#DADADA", name: getColorName("#DADADA").name });
+    uihues.push({ color: "#E3E3E3", name: getColorName("#E3E3E3").name });
+    uihues.push({ color: "#EDEDED", name: getColorName("#EDEDED").name });
+    console.log("no color loaded");
+  }
   return { uihues: uihues };
-  // console.log(color01.name);
-  // console.log(rand(255));
-  // return hex;
 }
 
 export function addHash(color: string) {
@@ -51,9 +57,9 @@ export function addHash(color: string) {
 
 export function getNewColor() {
   var nR = rand(255);
-  var nG = rand(255);
-  var nB = rand(255);
-
+  var nG = rand(252);
+  var nB = rand(254);
+  //Used lesser number because 255 was generating same values for all rgb
   return { r: nR, g: nG, b: nB };
 }
 
@@ -82,4 +88,60 @@ export function invCol(hex: string) {
     g = parseInt(hex.slice(2, 4), 16),
     b = parseInt(hex.slice(4, 6), 16);
   return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
+}
+
+// Return color set of 4
+function getColorset(scheme: string, colors: any) {
+  var hues = colors.colors();
+  var dataLength = hues.length;
+  var huesData = [];
+
+  switch (scheme) {
+    case "analogic":
+      huesData.push(addHash(hues[rand(2)]));
+      huesData.push(addHash(hues[rand(6) + 2]));
+      huesData.push(addHash(hues[rand(2) + 8]));
+      huesData.push(addHash(hues[rand(2) + 10]));
+      return huesData;
+      break;
+
+    case "tetrade":
+      huesData.push(addHash(hues[0]));
+      huesData.push(addHash(hues[rand(7) + 1]));
+      huesData.push(addHash(hues[rand(4) + 8]));
+      huesData.push(addHash(hues[rand(4) + 12]));
+      return huesData;
+      break;
+
+    case "triade":
+      huesData.push(addHash(hues[rand(3)]));
+      huesData.push(addHash(hues[rand(3) + 3]));
+      huesData.push(addHash(hues[rand(3) + 6]));
+      huesData.push(addHash(hues[rand(3) + 9]));
+      return huesData;
+      break;
+
+    case "contrast":
+      huesData.push(addHash(hues[1]));
+      huesData.push(addHash(hues[rand(2) + 2]));
+      huesData.push(addHash(hues[4]));
+      huesData.push(addHash(hues[rand(3) + 5]));
+      return huesData;
+      break;
+    case "mono":
+      huesData.push(addHash(hues[1]));
+      huesData.push(addHash(hues[0]));
+      huesData.push(addHash(hues[3]));
+      huesData.push(addHash(hues[2]));
+      return huesData;
+      break;
+    default:
+      //returning grey palatte
+      huesData.push("#CECECE");
+      huesData.push("#DADADA");
+      huesData.push("#E3E3E3");
+      huesData.push("#EDEDED");
+      return huesData;
+      break;
+  }
 }

@@ -1,3 +1,4 @@
+// Solve type issue
 declare module "prismaek";
 declare module "ntc-ts";
 declare module "color-scheme";

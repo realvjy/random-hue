@@ -1,26 +1,9 @@
-import { addHash, getColorData, invCol } from "./logic";
+import { getColorData, invCol } from "./logic";
 const { widget } = figma;
-const {
-  AutoLayout,
-  Ellipse,
-  Frame,
-  Image,
-  Rectangle,
-  SVG,
-  Text,
-  usePropertyMenu,
-  useSyncedState,
-  useEffect,
-  waitForTask,
-} = widget;
+const { AutoLayout, Text, usePropertyMenu, useSyncedState } = widget;
 
-// interface colorDataI {
-//   hues: string[];
-// }
 function Widget() {
   const [hues, setHues] = useSyncedState("hues", getColorData);
-  // setColorData(getColorData());
-  console.log(hues.uihues[0]);
 
   var hue_1 = hues.uihues[0].color;
   var hue_2 = hues.uihues[1].color;
@@ -36,32 +19,27 @@ function Widget() {
       },
     ],
     (e) => {
-      setHues(getColorData);
-
-      console.log(e.propertyName);
+      setHues(getColorData); //change color hues
     }
   );
   return (
     <AutoLayout
       name="uihues"
       direction="vertical"
-      horizontalAlignItems="center"
-      verticalAlignItems="center"
-      height="hug-contents"
       fill="#FFFFFF"
       cornerRadius={40}
       strokeWidth={6}
       padding={6}
       stroke={{
         type: "solid",
-        color: "#FFFFFF",
+        color: "#000000",
       }}
       rotation={0}
       effect={{
         type: "drop-shadow",
-        color: { r: 0, g: 0, b: 0, a: 0.2 },
-        offset: { x: 0, y: 12 },
-        blur: 20,
+        color: { r: 0, g: 0, b: 0, a: 1 },
+        offset: { x: 5, y: 8 },
+        blur: 0,
         spread: 2,
       }}
     >
@@ -82,7 +60,7 @@ function Widget() {
         <Text
           fill={invCol(hue_1)}
           opacity={0.8}
-          fontSize={10}
+          fontSize={11}
           blendMode="overlay"
         >
           {hues.uihues[0].name}
@@ -105,7 +83,7 @@ function Widget() {
         <Text
           fill={invCol(hue_2)}
           opacity={0.8}
-          fontSize={10}
+          fontSize={11}
           blendMode="overlay"
         >
           {hues.uihues[1].name}
@@ -123,12 +101,12 @@ function Widget() {
         fill={hue_3}
       >
         <Text fill={invCol(hue_3)} opacity={0.7}>
-          #FF00FF
+          {hue_3}
         </Text>
         <Text
           fill={invCol(hue_3)}
           opacity={0.8}
-          fontSize={10}
+          fontSize={11}
           blendMode="overlay"
         >
           {hues.uihues[2].name}
@@ -151,7 +129,7 @@ function Widget() {
         <Text
           fill={invCol(hue_4)}
           opacity={0.8}
-          fontSize={10}
+          fontSize={11}
           blendMode="overlay"
         >
           {hues.uihues[3].name}

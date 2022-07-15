@@ -22,8 +22,8 @@
     "color-scheme": "^1.0.1",
     "color-scheme-js": "^1.0.6",
     "ntc-ts": "^0.0.7",
-    "prismaek": "^0.2.0",
     "react": "^17.0.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^17.0.0",
     "react-native-image-colors": "^1.5.1",
     "rgb-hex": "^4.0.0"
