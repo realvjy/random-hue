@@ -1,4 +1,4 @@
-[![Random Hues](ui-src/preview.png)](https://www.figma.com/community/plugin/1107546399747513238/3dicons)
+[![Random Hues](ui-src/preview.png)](https://www.figma.com/community/widget/1128028298799358676/Random-Hues)
 
 # Random Hues Figma Widget
 
@@ -12,7 +12,7 @@ Explore millions of color hues/shades/tones in your Figma and FigJam design file
 
 ## Figma Community
 
-Grab community file from 👉 here [SOON](#)
+Grab community file from 👉 here [figma community](https://www.figma.com/community/widget/1128028298799358676/Random-Hues)
 
 ## Local development
 
