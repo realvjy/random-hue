@@ -3,6 +3,7 @@
 import { getColorName, initColors, ORIGINAL_COLORS } from "ntc-ts";
 import ColorScheme from "color-scheme";
 import rgbHex from "rgb-hex";
+import hexRgb from "hex-rgb";
 
 interface ntcResult {
   hexCode: string;
@@ -95,6 +96,7 @@ function getColorset(scheme: string, colors: any) {
   var hues = colors.colors();
   var dataLength = hues.length;
   var huesData = [];
+  // Copy with options
 
   switch (scheme) {
     case "analogic":
@@ -144,4 +146,10 @@ function getColorset(scheme: string, colors: any) {
       return huesData;
       break;
   }
+}
+
+export function getHextoRGB(hexcode: string) {
+  var col = hexRgb(hexcode, { format: "array" });
+
+  return { r: col[0] / 255, g: col[1] / 255, b: col[2] / 255, a: 1 };
 }
