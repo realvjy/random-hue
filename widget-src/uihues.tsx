@@ -105,30 +105,15 @@ const UIhues = () => {
         width={280}
         fill={hue_1}
         // Trying solve for copy on click
-        onClick={(e) =>
-          new Promise((resolve) => {
-            // Calling inline html ui
-            figma.showUI(
-              `
-              <button id="btn_test" type="button" >Check</button>
-              <script>
-                  document.getElementById('btn_test').onclick = function() {
-                    const el = document.createElement('textarea');
-                    el.value = 'sss';
-                    el.setAttribute('readonly', '');
-                    el.style.position = 'absolute';
-                    el.style.left = '-9999px';
-                    document.body.appendChild(el);
-                    el.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(el);
-                  }
-              </script>
-              `,
-              { visible: true }
-            );
-          })
-        }
+        onClick={(e) => {
+          return new Promise((resolve) => {
+            figma.showUI(__html__, { visible: true, width: 0, height: 0 });
+            figma.ui.postMessage(hue_1);
+            setTimeout(() => {
+              resolve(null);
+            }, 100);
+          });
+        }}
       >
         <Text fill={invCol(hue_1)} opacity={0.7}>
           {hue_1}
