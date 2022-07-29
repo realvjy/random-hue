@@ -1,3 +1,5 @@
+//Version 1 - Hues only
+// 14 July, 2022
 const { widget } = figma;
 const { AutoLayout, Text, usePropertyMenu, useSyncedState } = widget;
 import { getColorData, invCol } from "./logic";
@@ -53,6 +55,47 @@ const Hues = () => {
         height={72}
         width={280}
         fill={hue_1}
+        // Trying solve for copy on click
+        onClick={(e) => {
+          return new Promise((resolve) => {
+            // // figma.showUI(__html__, {
+            // //   visible: true,
+            // //   width: 0,
+            // //   height: 0,
+            // //   position: { x: 1000, y: 1000 },
+            // // });
+            // figma.showUI(`
+            //   <script>
+            //     window.onload=function(){
+            //       doc = document.getElementsByTagName('body')
+            //       console.log('inside log')
+            //     }
+            //     async function copyImage(url) {
+            //       if(null==document.body){
+            //         // document.body = $('body')[0];
+            //         doc = document.getElementsByTagName('body')
+            //         console.log(doc[0])
+            //       }
+            //       // text area method
+            //           let textArea = document.createElement("textarea");
+            //           textArea.value = url;
+            //           // make the textarea out of viewport
+            //           textArea.style.position = "fixed";
+            //           textArea.style.left = "-999999px";
+            //           textArea.style.top = "-999999px";
+            //           document.body.appendChild(textArea);
+            //           textArea.focus();
+            //           textArea.select();
+            //     }
+            //   console.log(copyImage('https://www.overlayz.studio/_next/static/media/3dicons.bd108537.png'))
+            //     console.log('somthing')
+            //   </script>`);
+            // figma.ui.postMessage(hue_1);
+            // setTimeout(() => {
+            //   resolve(null);
+            // }, 100);
+          });
+        }}
       >
         <Text fill={invCol(hue_1)} opacity={0.7}>
           {hue_1}

@@ -3,12 +3,14 @@
 # Random Hues Figma Widget
 
 Explore millions of color hues/shades/tones in your Figma and FigJam design files for perfect color palettes that suit your design next project.
+Now, you can get gradients as well. 
 
 ## Features:
 
 - By using the random button, you always get a pleasant color palette that generates in real time.
 - There are millions of possible combinations to genrate your next color palette.
 - Every shade of color has a name.
+- Generate gradient by picking 2 shades from palette
 
 ## Figma Community
 

@@ -8,13 +8,18 @@ function App() {
     const hue = event.data.pluginMessage;
     copy(hue);
   };
-
+  // Exp with copy code
   useEffect(() => {
-    window.addEventListener("message", copyHue);
-    return () => {
-      window.removeEventListener("message", copyHue);
-    };
-  }, [copyHue]);
+    // const copyHue = (event) => {
+    //   const hue = event.data.pluginMessage;
+    //   copy(hue);
+    // };
+    // window.addEventListener("message", copyHue);
+    // return () => {
+    //   window.removeEventListener("message", copyHue);
+    // };
+    console.log("ui");
+  }, []);
 
   return (
     <div className="App">

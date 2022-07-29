@@ -1,4 +1,6 @@
+// v2 - 29 Jul, 22
 const { widget } = figma;
+
 const {
   AutoLayout,
   Text,
@@ -19,12 +21,13 @@ const UIhues = () => {
   var hue_3 = hues.uihues[2].color;
   var hue_4 = hues.uihues[3].color;
 
+  // Generating 2 Gradient color hex for more randomization fixed first value at 0
+  // Second value is from hue_2,3 or 4
   var grad_hue_1 = hues.uihues[0].color;
   var grad_hue_2 = hues.uihues[rand(3) + 1].color;
   var grad_1 = getHextoRGB(grad_hue_1);
   var grad_2 = getHextoRGB(grad_hue_2);
 
-  const [color, setColor] = useSyncedState("theme", "#e06666");
   const [rhue, setRhue] = useSyncedState("grad", "hue");
   const hueOptions = [
     { option: "hue", label: "Hues" },
@@ -72,6 +75,7 @@ const UIhues = () => {
       }
     }
   );
+
   // Test for dropdown hue or gradient
   return rhue === "hue" ? (
     <AutoLayout
@@ -104,16 +108,6 @@ const UIhues = () => {
         height={72}
         width={280}
         fill={hue_1}
-        // Trying solve for copy on click
-        onClick={(e) => {
-          return new Promise((resolve) => {
-            figma.showUI(__html__, { visible: true, width: 0, height: 0 });
-            figma.ui.postMessage(hue_1);
-            setTimeout(() => {
-              resolve(null);
-            }, 100);
-          });
-        }}
       >
         <Text fill={invCol(hue_1)} opacity={0.7}>
           {hue_1}

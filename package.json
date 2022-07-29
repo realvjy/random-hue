@@ -25,6 +25,7 @@
     "color-scheme-js": "^1.0.6",
     "copy-text-to-clipboard": "^3.0.1",
     "copy-to-clipboard": "^3.3.1",
+    "figx": "^0.1.0",
     "hex-rgb": "^5.0.0",
     "ntc-ts": "^0.0.7",
     "react": "^17.0.0",
