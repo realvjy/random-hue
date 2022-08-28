@@ -64,9 +64,9 @@ export function getNewColor() {
   return { r: nR, g: nG, b: nB };
 }
 
+var prevrand = 0;
 export function rand(max: number) {
   var counter = 1;
-  var prevrand = 0;
   var time = new Date().getTime();
   var randValue = (time / counter / (prevrand + 1)) % max;
   counter++;
